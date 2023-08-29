@@ -151,10 +151,10 @@ print(sum);
 const에 대해
 code가 실행되지 않아도 확실한 sumS
 const int sumS = 30 + 40;
-code가 실행되지 않으면 알 수 없는 sumC <= 이건 사용할 수 없다
 
 <!-- 메서드도 변수도 const 에는 저장할 수 없다 -->
 
+code가 실행되지 않으면 알 수 없는 sumC <= 이건 사용할 수 없다
 const int sumC = sumNums(30, 40);
 }
 
@@ -251,7 +251,7 @@ return null;
 String arrowNotNullFunc(String? name) => name?.toUpperCase() ?? "NOT FOUND";
 
 <!-- 배열(list) 출력하는 방법 -->
-
+<!-- .add()와 .remove() .removeAt(몇번째 요소숫자) -->
 // dart 에서는 이 배열을 list로 본다
 var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var nations = ["rok", "usa", "brith", "germany"];
