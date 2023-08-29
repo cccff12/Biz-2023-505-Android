@@ -15,7 +15,7 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       "반갑습니다.",
       style: TextStyle(
         fontSize: 50,
