@@ -158,12 +158,19 @@ class StartPage extends State<HomePage> {
                   hintStyle: TextStyle(color: Colors.amber),
                   suffixIcon: Icon(Icons.search)),
             ),
-            const TextField(
-              decoration: InputDecoration(labelText: "name"),
+            const SizedBox(
+              height: 50,
             ),
             //ListView 를 사용하여 list 보이기
             //Expanded 를 실행해 Column box 에 가득차게 구현
-            Expanded(child: appBarBody()),
+            Expanded(
+              child: filterList.isNotEmpty
+                  ? appBarBody()
+                  : const Text(
+                      "없는데요?",
+                      style: TextStyle(fontSize: 25),
+                    ),
+            ),
           ],
         ),
       ),
