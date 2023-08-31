@@ -1,0 +1,126 @@
+<!-- 오른쪽 상단에 debug없애는 방법 -->
+
+```dart
+return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      ..)
+```
+
+<!-- appbar 그림자 -->
+
+```dart
+elevation: 5.0,
+```
+
+<!-- 글자에 색 등 넣는거  -->
+
+```dart
+title: const Text(
+    "아아.. 이것은 bar라는 것이다..",
+    style: TextStyle(color: Colors.black45),
+  ),
+```
+
+<!-- alret 창 밑에 띄우기 -->
+
+```dart
+class StartPage extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    var mainAppBar = AppBar(
+      title: const Text(
+        "아아.. 이것은 bar라는 것이다..",
+      ),
+      centerTitle: true,
+      elevation: 5.0,
+      actions: [
+        IconButton(
+            onPressed: () {
+              var snackBar = SnackBar( <= var를 써야 함 *주의
+                content: const Text("이것은 bar의 text"), <= alet 창으로 나올 메세지
+                action: SnackBarAction(label: "확ㅇ니", onPressed: () {}), <= 같이 나올 확인버튼 SnackBar 안에 같이 넣어주며 ㄴ됨
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar); <= ScaffoldMessenger가 있어야 함
+            },
+            icon: const Icon(Icons.person))
+      ],
+    );
+  }}
+```
+
+<!-- 리스트를 state로 만들고 반영시키기 위해 itemBuilder를 쓴다 -->
+
+```dart
+class StartPage extends State<HomePage> {
+  /// State 클래스 위젯에서 titles 배열 변수를 생성(선언과 초기화)
+  /// 이 순간 titles는 state가 된다.
+  /// state는 화면 랜더링, 또는 동적인 활동을 감시할 수 있는 동적 변수이다
+  List<String> titles = [
+    "아아..이것은 배열1 이라는 것이다..",
+    "아아..이것은 배열2 이라는 것이다..",
+    "아아..이것은 배열3 이라는 것이다..",
+    "아아..이것은 배열4 이라는 것이다..",
+    "아아..이것은 배열5 이라는 것이다..",
+    "아아..이것은 배열6 이라는 것이다..",
+  ];
+
+  /// 동적으로 변화되는 배열 요소들을 화면에 출력하기 위하여
+  /// ListView.builder() 함수를 사용하여 각 요소를 디자인한다
+  ListView appBarBody() => ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(titles[index]),
+          );
+        },
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: mainAppBar(context),
+      body: appBarBody(),
+    );
+  }
+}
+
+```
+
+<!-- 리스트를 눌렀을 때 색이 바뀌는 효과. 위와 비교해서 appBarBody만 바꿨음 -->
+
+```dart
+  ListView appBarBody() => ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Material(
+              child: InkWell(
+                onTap: () {},
+                highlightColor: const Color.fromARGB(255, 221, 207, 3),
+                splashColor: const Color.fromARGB(255, 0, 158, 250),
+                child: Row(
+                  children: [
+                    Text("${index + 1} : "),
+                    Text(titles[index]),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+
+```
+
+```dart
+
+```
+
+```dart
+
+```
+
+```dart
+
+```
