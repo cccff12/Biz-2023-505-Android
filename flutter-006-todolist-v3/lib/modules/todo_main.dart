@@ -47,16 +47,17 @@ class _StartPage extends State<StartPage> {
         title: const Text("나의 TodoList"),
         actions: [
           IconButton(
-              onPressed: () {
-                showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (context) => alertDialog(context),
-                );
-              },
-              icon: const Icon(
-                Icons.add_alarm,
-              ))
+            onPressed: () {
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) => alertDialog(context),
+              );
+            },
+            icon: const Icon(
+              Icons.add_alarm,
+            ),
+          )
         ],
       ),
       bottomSheet: SafeArea(

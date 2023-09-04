@@ -1,3 +1,4 @@
+```dart
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todolist/models/todo.dart';
@@ -106,6 +107,7 @@ class TodoService {
     return List.generate(
         todolist.length,
         (index) => Todo(
+            <!-- 여기는 Dto 따라 설정 -->
               id: todolist[index]["id"],
               sdate: todolist[index]["sdate"],
               stime: todolist[index]["stime"],
@@ -114,3 +116,78 @@ class TodoService {
             ));
   }
 }
+```
+
+<!-- 그리고 여기에 맞춰 사용하는 양식 -->
+
+```dart
+  Todo getTodo(String content) {
+    return Todo(
+      sdate: DateFormat("yyyy-MM-dd").format(DateTime.now()),
+      stime: DateFormat("HH:ss:mm").format(DateTime.now()),
+      content: content,
+      complete: false,
+    );
+  }
+
+```
+
+<!-- insert -->
+
+```dart
+IconButton(
+                onPressed: () {
+                  var todo = getTodo(todoContent);
+                  setState(() {
+                    // todoList.add(todo);
+                    TodoService().insert(todo);
+                    todoContent = "";
+                    inputController.clear();
+                  });
+                },
+                icon: const Icon(Icons.send_outlined),
+              )
+
+```
+
+<!-- selectAll -->
+
+```dart
+   body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: FutureBuilder(
+          // future 는 실제 데이터를 가져오는 속성
+          // 여기서에서 가져온 데이터는 builder 에게 snapshot 에 담아서 전달
+          future: TodoService().selectAll(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return todoListView(
+                snapshot: snapshot,
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(
+                  semanticsLabel: "데이터가 없어요 ㅠㅠㅠㅠㅠㅠㅠㅠ",
+                ),
+              );
+            }
+          },
+        ),
+      ),
+```
+
+```dart
+
+```
+
+```dart
+
+```
+
+```dart
+
+```
+
+```dart
+
+```
