@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: StartPage(),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(
+        home: const StartPage(),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(scaffoldBackgroundColor: Colors.blueAccent));
   }
 }
 
@@ -123,9 +123,18 @@ class _StartPage extends State<StartPage> {
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            //  Dismissible : 제스처를 통해 항목을 제거할 수 있는 위젯
+            // 클릭했을 때 반응
+            onTap: () {},
+            selectedColor:
+                const Color.fromARGB(255, 255, 255, 123).withOpacity(0.5),
+            splashColor: const Color.fromARGB(255, 255, 129, 25).withOpacity(1),
+            //  Dismissible : 제스처(여기서는 좌우)를 통해 항목을 제거할 수 있는 위젯
             title: Dismissible(
               key: Key(todoList[index].content),
+              background: Container(
+                color: Colors.amber,
+                child: const Center(child: Text("살고싶어")),
+              ),
               // Dismissible 실행 후에 할것 () 안에(매개변수)가 반드시 필요하다
               onDismissed: (direction) {
                 setState(() {
