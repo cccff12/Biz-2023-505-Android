@@ -34,7 +34,7 @@ class _MyPage extends State<MyPage> {
                 // 여기는 비동기 방식으로 전달하는게 좋음 데이터를 잃을 수 있으니
                 var result = await Navigator.of(context).push(
                   MaterialPageRoute(
-                    // 원래는  detail로 이동이었음
+                    // 뒤에 있는 userDto 를 userDto라는 이름으로 전달
                     builder: (context) => UserInput(userDto: userDto),
                   ),
                 );
@@ -51,7 +51,7 @@ class _MyPage extends State<MyPage> {
                 );
               },
               child: const Text("정보수정"),
-            )
+            ),
           ],
         ),
       ),
