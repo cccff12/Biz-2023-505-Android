@@ -76,3 +76,8 @@ flutter pub get
 ```
 
 여기까지가 auth(인증) 사용하는 방법
+
+이제 login.dart에서 statefull 만드는데 import가 제대로 됐는지 확인
+import 'package:flutter/material.dart'; 이거 돼야함
+
+firebase_autho.md에서 계속
