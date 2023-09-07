@@ -80,4 +80,4 @@ flutter pub get
 이제 login.dart에서 statefull 만드는데 import가 제대로 됐는지 확인
 import 'package:flutter/material.dart'; 이거 돼야함
 
-firebase_autho.md에서 계속
+firebase\_추가설치.md에서 계속

@@ -51,3 +51,20 @@ ElevatedButton(
                   },
                   child: const Text("로그인 ElevatedButton")),
 ```
+
+## firebase fireStore 사용하기
+
+- dependency 설치 :`flutter pub add cloud_firestore`
+
+## 배포시 Dex 오류 발생하는 경우
+
+-`project / android /app / build.gradel ` 파일을 찾는다
+
+- 파일에서 `defaultConfig` 항목을 찾아 `multoDexEnabled true` 추가
+
+```dart
+defaultConfig {
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+```
