@@ -95,6 +95,7 @@ class _JoinPageState extends State<JoinPage> {
           _formKey.currentState?.validate();
 
           try {
+            // 로그인
             var result =
                 await FirebaseAuth.instance.createUserWithEmailAndPassword(
               email: _emailValue,
@@ -103,6 +104,7 @@ class _JoinPageState extends State<JoinPage> {
             widget.updateAuthUser(result.user);
             // email password외에 정보를 저장할려면 fireStore에 저장해야한다
             // 저장하기 위해 cloud_firestore 설치
+            // 그리고 firestore에 저장
             if (result.user != null) {
               await FirebaseFirestore.instance
                   .collection("user")
