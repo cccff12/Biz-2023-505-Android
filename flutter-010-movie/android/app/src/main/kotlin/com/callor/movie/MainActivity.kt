@@ -1,4 +1,4 @@
-package movie
+package com.callor.movie
 
 import io.flutter.embedding.android.FlutterActivity
 
